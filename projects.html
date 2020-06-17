@@ -4,7 +4,97 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+ * {
+	 margin: 0;
+	 padding: 0;
+	 box-sizing: border-box;
+}
+ body {
+	 height: 100vh;
+	 display: grid;
+	 align-content: center;
+	 justify-content: center;
+	 font-family: "Rubik", sans-serif;
+}
+ body header {
+	 width: 1040px;
+	 height: 468px;
+	 position: relative;
+}
+ body header .bg {
+	 width: 832px;
+	 height: 468px;
+	 border-radius: 12px;
+	 background: url(https://i.imgur.com/fbgvUpl.png) center center / cover;
+}
+ body header .container {
+	 top: 40%;
+	 display: grid;
+	 grid-row-gap: 32px;
+	 position: absolute;
+	 grid-column-gap: 88px;
+	 grid-template-columns: repeat(2, 1fr);
+}
+ body header .content {
+	 width: 476px;
+	 height: 344px;
+	 border-radius: 12px;
+	 box-sizing: border-box;
+	 padding: 64px 64px 50px;
+	 background-color: #fff;
+	 box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 48px;
+}
+ body header .content h1 {
+	 font-size: 30px;
+	 font-weight: 500;
+	 line-height: 40px;
+	 margin-bottom: 12px;
+	 color: #3e416d;
+}
+ body header .content p {
+	 margin-top: 16px;
+	 line-height: 28px;
+	 margin-bottom: 26px;
+	 color: #757686;
+}
+ body header .content a {
+	 font-weight: 500;
+	 line-height: 24px;
+	 color: #62d76b;
+	 text-decoration: none;
+	 text-transform: uppercase;
+}
+ body header .content a:hover {
+	 color: #32b964;
+}
+
+</style>
 <body>
+
+<header>
+	<div class="bg"></div>
+	<div class="container">
+		<div></div>
+		<section class="content">
+			<h1>How Learning to Code Has Changed My Life</h1>
+			<p>Hannah from Pittsburgh shares the profound impact learning to code has had on her life.</p>
+			<a href="#">Continue reading <i class="fas fa-arrow-right"></i></a>
+		</section>
+	</div>
+    <hr>
+    <hr>
+    <div class="bg"></div>
+	<div class="container">
+		<div></div>
+		<section class="content">
+			<h1>How Learning to Code Has Changed My Life</h1>
+			<p>Hannah from Pittsburgh shares the profound impact learning to code has had on her life.</p>
+			<a href="#">Continue reading <i class="fas fa-arrow-right"></i></a>
+		</section>
+	</div>
+</header>
 
 </body>
 </html>
