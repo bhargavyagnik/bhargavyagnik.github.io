@@ -348,7 +348,7 @@ window.onclick = function(event) {
  .blog-card .meta {
 	 position: relative;
 	 z-index: 0;
-	 height: 200px;
+	 height: 25vw;
 }
  .blog-card .photo {
 	 position: absolute;
@@ -376,7 +376,7 @@ window.onclick = function(event) {
 	 color: #fff;
 	 padding: 10px;
 	 width: 100%;
-	 font-size: 0.9rem;
+	 font-size: 1vw;
 }
  .blog-card .details a {
 	 text-decoration: dotted underline;
@@ -418,6 +418,7 @@ window.onclick = function(event) {
 	 line-height: 1;
 	 margin: 0;
 	 font-size: 1.7rem;
+     color: rgba(0,0,0,0.75);
 }
  .blog-card .description h2 {
 	 font-size: 1rem;
@@ -453,15 +454,7 @@ window.onclick = function(event) {
  .blog-card p:first-of-type {
 	 margin-top: 1.25rem;
 }
- .blog-card p:first-of-type:before {
-	 content: "";
-	 position: absolute;
-	 height: 5px;
-	 background: #5ad67d;
-	 width: 35px;
-	 top: -0.75rem;
-	 border-radius: 3px;
-}
+
  .blog-card:hover .details {
 	 left: 0%;
 }
@@ -549,8 +542,8 @@ window.onclick = function(event) {
     </div>
 </div>
 
-<div class="w3-container" style="background: white;margin-top: 10%;text-align: center;padding-bottom: 5%;margin-bottom: 20%" id="projects">
-        <h2 class="w3-wide" style="color: rgba(0,0,0,0.75);">Projects</h2>
+<div class="w3-container" style="background: white;margin-top: 10% ; padding-left:20vw; padding-right:20vw  ;text-align: center;padding-bottom: 5%;margin-bottom: 20%" id="projects">
+        <h2 class="w3-wide" style="color: rgba(0,0,0,0.75);margin-bottom: 3%">Projects</h2>
     <div class="blog-card">
     <div class="meta">
       <div class="photo" style="background-image: url('static/coviddash.jpg')"></div>
@@ -563,6 +556,8 @@ window.onclick = function(event) {
             <li><a href="#">Forecasting</a></li>
             <li><a href="#">HTML</a></li>
             <li><a href="#">CSS</a></li>
+              <li><a href="#">Flask</a></li>
+              <li><a href="#">ML</a></li>
           </ul>
         </li>
       </ul>
@@ -592,9 +587,37 @@ window.onclick = function(event) {
       </ul>
     </div>
     <div class="description">
-      <h1></h1>
-      <h2></h2>
-      <p></p>
+      <h1>Face Mask Detection</h1>
+      <h2>Computer Vision based face mask detection technique with ML</h2>
+      <p>Using Machine Learning and Computer Vision, I created a tool for COVID-19 that could detect if anyone has worn a mask or not and it works in real time at 30-45 fps.</p>
+      <p class="read-more">
+        <a href="#">Read More</a>
+      </p>
+    </div>
+  </div>
+    <div class="blog-card alt1">
+    <div class="meta">
+      <div class="photo" style="background-image: url('static/andhadhun.jpg')"></div>
+      <ul class="details">
+        <li class="author"><a href="#">Yagnik Bhargav</a></li>
+        <li class="date">October 18, 2019</li>
+        <li class="tags">
+          <ul>
+            <li><a href="#">Python</a></li>
+            <li><a href="#">Computer Vision</a></li>
+            <li><a href="#">Text to Speech</a></li>
+            <li><a href="#">AI</a></li>
+              <li><a href="#">Mouse Control</a></li>
+              <li><a href="#">Assistant</a></li>
+              <li><a href="#">PyautoGUI</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="description">
+      <h1>Andhadhun</h1>
+      <h2>Computer Vision and AI Assistance based tool for using a computer </h2>
+      <p> Using CV and TTS and Automation, we created a tool for controlling mouse, controlling the PC with voice commands etc. So it is a sort of accessibility tool</p>
       <p class="read-more">
         <a href="#">Read More</a>
       </p>
