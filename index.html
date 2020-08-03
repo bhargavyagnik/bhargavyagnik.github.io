@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165887274-1"></script>
 <script>
-    $(window).on("load",function() {
+    $(window).ready(function() {
   $(window).scroll(function() {
     var windowBottom = $(this).scrollTop() + $(this).innerHeight();
     $(".fade").each(function() {
@@ -347,30 +347,6 @@ window.onclick = function(event) {
  .blog-card .details a {
 	 text-decoration: dotted underline;
 }
- .blog-card .details ul li {
-	 display: inline-block;
-}
- .blog-card .details .author:before {
-	 font-family: FontAwesome;
-	 margin-right: 10px;
-	 content: "\f007";
-}
- .blog-card .details .date:before {
-	 font-family: FontAwesome;
-	 margin-right: 10px;
-	 content: "\f133";
-}
- .blog-card .details .tags ul:before {
-	 font-family: FontAwesome;
-	 content: "\f02b";
-	 margin-right: 10px;
-}
- .blog-card .details .tags li {
-	 margin-right: 2px;
-}
- .blog-card .details .tags li:first-child {
-	 margin-left: -4px;
-}
  .blog-card .description {
 	 padding: 1rem;
 	 background: #fff;
@@ -578,7 +554,7 @@ window.onclick = function(event) {
     <a href="https://www.instagram.com/yagnikbhargav/" class="w3-button w3-hover-pink" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: black;font-size:4vh"><i class="fa fa-instagram"></i></span></a>
     <a href="https://twitter.com/YagnikBhargav" class="w3-button w3-hover-blue" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: black;font-size:4vh"><i class="fa fa-twitter"></i></span></a>
     <a href="mailto:bhargavyagnik99@gmail.com" class="w3-button w3-hover-red" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: black;font-size:6vh"><i class="fa fa-envelope"></i></span></a>
-    <a href="mailto:bhargavyagnik99@gmail.com" class="w3-button w3-hover-grey" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: black;font-size:6vh"><i class="fa fa-github"></i></span></a>
+    <a href="https://github.com/bhargavyagnik" class="w3-button w3-hover-grey" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: black;font-size:6vh"><i class="fa fa-github"></i></span></a>
     <a href="https://www.linkedin.com/in/bhargav-yagnik-745518168/" class="w3-button w3-hover-indigo" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: black;font-size:4vh"><i class="fa fa-linkedin">  </i></span></a>
     <a href="https://www.facebook.com/BCYAGNIK" class="w3-button w3-hover-blue" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: black;font-size:4vh"><i class="fa fa-facebook"></i></span></a>
 
