@@ -33,6 +33,166 @@
 
     h1,h2,h3,h4,h5 {font-family: "Roboto", sans-serif}
 
+    .blog-container {
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.55) 0 3px 7px -1px;
+      font-family: "adelle-sans", sans-serif;
+      font-weight: 100;
+      margin: 48px auto;
+      width: 20rem;
+    }
+    @media screen and (min-width: 480px) {
+      .blog-container {
+        width: 28rem;
+      }
+    }
+    @media screen and (min-width: 767px) {
+      .blog-container {
+        width: 40rem;
+      }
+    }
+    @media screen and (min-width: 959px) {
+      .blog-container {
+        width: 50rem;
+      }
+    }
+    .blog-container a {
+      color: #4d4dff;
+      text-decoration: none;
+      transition: 0.25s ease;
+    }
+    .blog-container a:hover {
+      border-color: #ff4d4d;
+      color: #ff4d4d;
+    }
+    .blog-cover {
+      background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/yosemite-3.jpg");
+      background-size: cover;
+      border-radius: 5px 5px 0 0;
+      height: 15rem;
+      box-shadow: inset rgba(0, 0, 0, .2) 0 64px 64px 16px;
+    }
+    .blog-author, .blog-author--no-cover {
+      margin: 0 auto;
+      padding-top: 0.125rem;
+      width: 80%;
+    }
+    .blog-author h3::before, .blog-author--no-cover h3::before {
+      background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/russ.jpeg");
+      background-size: cover;
+      border-radius: 50%;
+      content: " ";
+      display: inline-block;
+      height: 32px;
+      margin-right: 0.5rem;
+      position: relative;
+      top: 8px;
+      width: 32px;
+    }
+    .blog-author h3 {
+      color: #fff;
+      font-weight: 100;
+    }
+    .blog-author--no-cover h3 {
+      color: #999;
+      font-weight: 100;
+    }
+    .blog-body {
+      margin: 0 auto;
+      width: 80%;
+    }
+    .video-body {
+      height: 100%;
+      width: 100%;
+    }
+    .blog-title h1 a {
+      color: #333;
+      font-weight: 100;
+    }
+    .blog-summary p {
+      color: #4d4d4d;
+    }
+    .blog-tags ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      list-style: none;
+      padding-left: 0;
+    }
+    .blog-tags li + li {
+      margin-left: 0.5rem;
+    }
+    .blog-tags a {
+      border: 1px solid #999;
+      border-radius: 3px;
+      color: #999;
+      font-size: 0.75rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      letter-spacing: 1px;
+      padding: 0 0.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      width: 5rem;
+    }
+    .blog-footer {
+      border-top: 1px solid #e6e6e6;
+      margin: 0 auto;
+      padding-bottom: 0.125rem;
+      width: 80%;
+    }
+    .blog-footer ul {
+      list-style: none;
+      display: flex;
+      flex: row wrap;
+      justify-content: flex-end;
+      padding-left: 0;
+    }
+    .blog-footer li:first-child {
+      margin-right: auto;
+    }
+    .blog-footer li + li {
+      margin-left: 0.5rem;
+    }
+    .blog-footer li {
+      color: #999;
+      font-size: 0.75rem;
+      height: 1.5rem;
+      letter-spacing: 1px;
+      line-height: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+      white-space: nowrap;
+    }
+    .blog-footer li a {
+      color: #999;
+    }
+    .comments {
+      margin-right: 1rem;
+    }
+    .published-date {
+      border: 1px solid #999;
+      border-radius: 3px;
+      padding: 0 0.5rem;
+    }
+    .numero {
+      position: relative;
+      top: -0.5rem;
+    }
+    .icon-star, .icon-bubble {
+      fill: #999;
+      height: 24px;
+      margin-right: 0.5rem;
+      transition: 0.25s ease;
+      width: 24px;
+    }
+    .icon-star:hover, .icon-bubble:hover {
+      fill: #ff4d4d;
+    }
+
 </style>
 <body >
 
@@ -53,125 +213,48 @@
 <div class="w3-content" style="max-width:1400px">
 
 <!-- Header -->
-<div class="intro"  style="padding-top: 5vw;border-radius: 15px;height:50%;">
+<div class="intro"  style="padding-top: 10vw;border-radius: 15px;height:50%;">
  <div class="center">
   <h1 style="line-height:100%;font-family: 'Open Sans'; font-size: 10vw;font-weight: bolder;color: rgba(245, 245, 245, 0.8);"> Blog </h1>
  </div>
 </div>
+</div>
 
-<!-- Grid -->
-<div class="w3-row">
+<div style="padding-top: 5vh">
 
-<!-- Blog entries -->
-<div class="w3-col l8 s12">
-  <!-- Blog entry -->
-  <div class="w3-card-4 w3-margin w3-white">
-    <img src="/w3images/woods.jpg" alt="Nature" style="width:100%">
-    <div class="w3-container">
-      <h3><b>TITLE HEADING</b></h3>
-      <h5>Title description, <span class="w3-opacity">Date</span></h5>
-    </div>
+  <div class="blog-container">
 
-    <div class="w3-container">
-      <p>This is a test data </p>
-      <div class="w3-row">
-        <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
-        </div>
+    <div class="blog-header">
+      <div class="blog-cover" style="background: url('static/chess.jpg')">
 
       </div>
     </div>
-  </div>
-  <hr>
 
-  <!-- Blog entry -->
-  <div class="w3-card-4 w3-margin w3-white">
-  <img src="/w3images/bridge.jpg" alt="Norway" style="width:100%">
-    <div class="w3-container">
-      <h3><b>BLOG ENTRY</b></h3>
-      <h5>Title description, <span class="w3-opacity">April 2, 2014</span></h5>
-    </div>
-
-    <div class="w3-container">
-      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
-        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      <div class="w3-row">
-        <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
-        </div>
-        <div class="w3-col m4 w3-hide-small">
-          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
-        </div>
+    <div class="blog-body">
+      <div class="blog-title">
+        <h1><a href="#">AI and Chess</a></h1>
+      </div>
+      <div class="blog-summary">
+        <p>Since the dawn of AI, Chess has always been subject matter to compare the developements and if AI can beat Humans. This blog i write my learnings and opinions while i was creating this Chess bot with my Friends Zainuddin and Mohammed.</p>
+      </div>
+      <div class="blog-tags">
+        <ul>
+          <li><a href="#">css</a></li>
+          <li><a href="#">web design</a></li>
+          <li><a href="#">codepen</a></li>
+          <li><a href="https://twitter.com/russbeye">twitter</a></li>
+        </ul>
       </div>
     </div>
+
+    <div class="blog-footer">
+      <ul>
+        <li class="published-date">2 days ago</li>
+      </ul>
+    </div>
+
   </div>
-<!-- END BLOG ENTRIES -->
 </div>
-
-<!-- Introduction menu -->
-<div class="w3-col l4">
-  <!-- About Card -->
-  <div class="w3-card w3-margin w3-margin-top">
-  <img src="/w3images/avatar_g.jpg" style="width:100%">
-    <div class="w3-container w3-white">
-      <h4><b>My Name</b></h4>
-      <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
-    </div>
-  </div><hr>
-
-  <!-- Posts -->
-  <div class="w3-card w3-margin">
-    <div class="w3-container w3-padding">
-      <h4>Popular Posts</h4>
-    </div>
-    <ul class="w3-ul w3-hoverable w3-white">
-      <li class="w3-padding-16">
-        <img src="/w3images/workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Lorem</span><br>
-        <span>Sed mattis nunc</span>
-      </li>
-      <li class="w3-padding-16">
-        <img src="/w3images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Ipsum</span><br>
-        <span>Praes tinci sed</span>
-      </li>
-      <li class="w3-padding-16">
-        <img src="/w3images/skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Dorum</span><br>
-        <span>Ultricies congue</span>
-      </li>
-      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="/w3images/rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">Mingsum</span><br>
-        <span>Lorem ipsum dipsum</span>
-      </li>
-    </ul>
-  </div>
-  <hr>
-
-  <!-- Labels / tags -->
-  <div class="w3-card w3-margin">
-    <div class="w3-container w3-padding">
-      <h4>Tags</h4>
-    </div>
-    <div class="w3-container w3-white">
-    <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
-      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
-    </p>
-    </div>
-  </div>
-
-<!-- END Introduction Menu -->
-</div>
-
-<!-- END GRID -->
-</div><br>
-
-</div>
-
 
 </body>
 </html>
