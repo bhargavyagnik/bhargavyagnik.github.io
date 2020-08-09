@@ -3,10 +3,25 @@
 <!DOCTYPE html>
 <html>
 <title>Blog Bhargav Yagnik</title>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="static/byicon.png" type="image/icon type">
+<script>
+
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+</script>
 <style>
     body{
         margin: 0;
@@ -33,6 +48,7 @@
 
     h1,h2,h3,h4,h5 {font-family: "Roboto", sans-serif}
 
+
     .blog-container {
       background: #fff;
       border-radius: 5px;
@@ -41,6 +57,9 @@
       font-weight: 100;
       margin: 48px auto;
       width: 20rem;
+    }
+    a {
+      font-family: 'Roboto';
     }
     @media screen and (min-width: 480px) {
       .blog-container {
@@ -194,6 +213,7 @@
     }
 
 </style>
+</head>
 <body >
 
 <div class="w3-top" id="navbar">
@@ -202,23 +222,30 @@
     <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
     <a href="/projects" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Projects</a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Blog</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact</a>
+    <a href="/#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact</a>
     <a href="https://www.instagram.com/yagnikbhargav/" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-instagram"></i></a>
-      <a href="https://github.com/bhargavyagnik" class="w3-padding-large w3-hover-white w3-hide-small w3-right"><i class="fa fa-github"></i></a>
-      <a href="https://twitter.com/YagnikBhargav" class="w3-padding-large w3-hover-blue w3-hide-small w3-right"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/bhargav-yagnik-745518168/" class="w3-padding-large w3-hover-indigo w3-hide-small w3-right"><i class="fa fa-linkedin"></i></a>
+    <a href="https://github.com/bhargavyagnik" class="w3-padding-large w3-hover-white w3-hide-small w3-right"><i class="fa fa-github"></i></a>
+    <a href="https://twitter.com/YagnikBhargav" class="w3-padding-large w3-hover-blue w3-hide-small w3-right"><i class="fa fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/bhargav-yagnik-745518168/" class="w3-padding-large w3-hover-indigo w3-hide-small w3-right"><i class="fa fa-linkedin"></i></a>
   </div>
 </div>
 
-<div class="w3-content" style="max-width:1400px">
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="/projects" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Projects</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Blog</a>
+  <a href="/#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Contact</a>
+</div>
 
-<!-- Header -->
-<div class="intro"  style="padding-top: 10vw;border-radius: 15px;height:50%;">
- <div class="center">
-  <h1 style="line-height:100%;font-family: 'Open Sans'; font-size: 10vw;font-weight: bolder;color: rgba(245, 245, 245, 0.8);"> Blog </h1>
- </div>
+<div class="intro"  style="padding-top: 10vw;border-radius: 15px;height:50%; padding-left: 20%">
+  <div class="center">
+    <h1 style="line-height:100%;font-family: 'Open Sans'; font-size: 10vw;font-weight: bolder;color: rgba(245, 245, 245, 0.8)"> Blog </h1>
+    <h3 style="line-height:100%;color: rgba(245,245,245,0.5);font-family:Roboto;font-size: 4vw;font-weight: lighter;">
+      Welcome to my Blog page,<br/> Here I share opinions and insights <br/>in ML, Programming, Photography <br/> and hopefully the poems i write.
+    </h3>
+  </div>
 </div>
-</div>
+
 
 <div style="padding-top: 5vh">
 
