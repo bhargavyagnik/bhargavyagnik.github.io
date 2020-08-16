@@ -6,29 +6,15 @@
     <link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'>
 
 <style>
-    body {
-        background-color: #ffffff;
-        background-attachment: fixed;
-        background: linear-gradient(230deg, #240b36,#ff416c, #8a2387, #5d26c1, #a17fe0, #59c173);
-        background-size: 1800% 1800%;
-        -webkit-animation: AnimationName 29s ease infinite;
-        animation: AnimationName 29s ease infinite;
-        opacity: 0;
-        transition: opacity 5s;
-    }
-    @-webkit-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+    body{
+        background: #200122;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     }
     .board {
         position: absolute;
-        top: 50%;
+        top: 30%;
         left: 50%;
         height: 150px;
         width: 500px;

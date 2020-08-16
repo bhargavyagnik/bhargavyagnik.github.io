@@ -207,11 +207,26 @@
 <div style="background-color: white;margin: 5%;padding-bottom: 5%;-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);" >
     <img src="static/chess.jpg" style="width: 100%;">
 <p style="font-size:3vh;padding-top: 5px;text-align: left;padding: 5%">
-    Chess has always been a centre of attraction when it comes to making machines play with humans, as chess being a very complex game and it forms the basics from where AI has evolved. Even though the researchers started to solve it from 18th century on hardware's , it in 1992 a computer could defeat a world champion.
-    Researchers are still not able to get a truly "State of the art" chess engine which could always predict the best move as it has around 10,000,000 moves to be checked which may take around 100's of years. In a simple chess game it may have moves up to 10120 which may take some light years to get the complete chess game correct. So this is the reason AI CHESS becomes a trending research topic over these many years.
-    Currently the best AI chess engine being Alpha GO checks around 10,000's of moves which is 100x better than any Grandmaster.
+    Chess has always been a centre of attraction when it comes to making machines play with humans, as chess being a very
+    complex game and it forms the basics from where AI has evolved. Even though the researchers started to solve it from
+    18th century on hardware's , it in 1992 a computer could defeat a world champion.Researchers are still not able to
+    get a truly "State of the art" chess engine which could always predict the best move as it has around 10,000,000
+    moves to be checked which may take around 100's of years. In a simple chess game it may have moves up to 10<sup>120</sup>
+    which may take some light years to get the complete chess game correct. So this is the reason AI CHESS becomes a trending
+    research topic over these many years.Currently the best AI chess engine being Alpha GO checks around 10,000's of moves which is 100x better than any Grandmaster.
     <br>
-    With hours of discussion and watching various moves and approches to solve the game of Chess and considering it as our first AI project, I along with <a href="https://github.com/Zain-Saiyed">Zain</a> and <a href="https://github.com/momo1606"> Mohammed </a> ,
+    Work started to become complicated when we began to figure out the complexity of the game and the moves.
+    I along with <a href="https://github.com/Zain-Saiyed">Zain</a> and <a href="https://github.com/momo1606">Mohammed</a> ,
+    discussed various approaches, and how our computing limitations would allow us to reach to a level nowhere near good
+    Chess Player. We found an approach using weighted matrices and that helped us lower the depth for search improving
+    the importance of places where the pieces were also the presence of opponent pieces etc. around it. We calculated a
+    weighted score for each and this score was desired to be maximised
+    <br>
+    <br>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Minimax.svg/400px-Minimax.svg.png" style="display: block;margin-left: auto; margin-right: auto;">
+    <br>
+    We then used Min-Max approach that is extensively used in Solving problems like Tic-Tac-Toe, Chess etc. This is a
+    backtracking - decision rule based algorithm used for minimizing the possible loss at each step and maximising loss of opponent
     </p>
 </div>
 
