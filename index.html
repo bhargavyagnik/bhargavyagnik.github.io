@@ -102,6 +102,7 @@ window.onclick = function(event) {
     h2{font-family: 'Roboto';font-size: 4.5vw;font-weight:bolder ;color: rgba(245, 245, 245, 0.66);}
     p{font-family: Roboto ; font-size: 1vw;color: rgba(0,0,0,0.75);text-align: center}
     body{
+
         margin: 0;
         height: 100vw;
         background-attachment: fixed;
@@ -112,7 +113,12 @@ window.onclick = function(event) {
     animation: AnimationName 29s ease infinite;
     opacity: 0;
     transition: opacity 5s;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
 }
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
     th, td {
   padding: 5px;
 }
