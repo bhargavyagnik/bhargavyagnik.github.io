@@ -32,6 +32,7 @@
     -webkit-animation: AnimationName 29s ease infinite;
     animation: AnimationName 29s ease infinite;
     transition: opacity 5s;
+      font-size: 12px;
 }
 
 @-webkit-keyframes AnimationName {
@@ -46,170 +47,131 @@
 }
 
     h1,h2,h3,h4,h5 {font-family: "Roboto", sans-serif}
+    @media screen and (max-width: 650px) {
+      body{
+        font-size: 8px;
+      }
+    }
+    .property-card
+    {
+      height:36em;
+      width:28em;
+      display:-webkit-box;
+      display:-ms-flexbox;
+      display:flex;
+      -webkit-box-orient:vertical;
+      -webkit-box-direction:normal;
+      -ms-flex-direction:column;
+      flex-direction:column;
+      position:relative;
+      -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      border-radius:16px;
+      overflow:hidden;
+      -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+      box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    }
+    /* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
 
+    /* Top Half of card, image. */
 
-    .blog-container {
-      background: #fff;
-      border-radius: 5px;
-      box-shadow: rgba(0, 0, 0, 0.55) 0 3px 7px -1px;
-      font-family: "adelle-sans", sans-serif;
-      font-weight: 100;
-      margin: 48px auto;
-      width: 20rem;
+    .property-image
+    {
+      height:18em;
+      width:28em;
+      padding:1em 2em;
+      position:Absolute;
+      top:0px;
+      -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      background-size:cover;
+      background-repeat:no-repeat;
     }
-    a {
-      font-family: 'Roboto';
+
+    /* Bottom Card Section */
+
+    .property-description
+    {
+      background-color: #FAFAFC;
+      height:18em;
+      width:28em;
+      position:absolute;
+      bottom:0em;
+      -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      padding: 0.5em 1em;
+      text-align:center;
     }
-    @media screen and (min-width: 480px) {
-      .blog-container {
-        width: 28rem;
-      }
+
+    /* Social Icons */
+
+    .property-social-icons
+    {
+      width:1em;
+      height:1em;
+      background-color:black;
+      position:absolute;
+      bottom:1em;
+      left:1em;
+      -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
-    @media screen and (min-width: 767px) {
-      .blog-container {
-        width: 40rem;
-      }
+
+    /* Property Cards Hover States */
+
+    .property-card:hover .property-description
+    {
+      height:0em;
+      padding:0px 1em;
     }
-    @media screen and (min-width: 959px) {
-      .blog-container {
-        width: 50rem;
-      }
+    .property-card:hover .property-image
+    {
+      height:36em;
     }
-    .blog-container a {
-      color: #4d4dff;
-      text-decoration: none;
-      transition: 0.25s ease;
+
+    .property-card:hover .property-social-icons
+    {
+      background-color:white;
     }
-    .blog-container a:hover {
-      border-color: #ff4d4d;
-      color: #ff4d4d;
+
+    .property-card:hover .property-social-icons:hover
+    {
+      background-color:blue;
+      cursor:pointer;
     }
-    .blog-cover {
-      background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/yosemite-3.jpg");
-      background-size: cover;
-      border-radius: 5px 5px 0 0;
-      height: 15rem;
-      box-shadow: inset rgba(0, 0, 0, .2) 0 64px 64px 16px;
+    .grid{
+      display: grid;
+      grid-row-gap: 2em;
+      grid-template-columns: repeat(
+              auto-fit,
+              minmax(36em, 34em)
+      );
+      align-items: start;
     }
-    .blog-author, .blog-author--no-cover {
-      margin: 0 auto;
-      padding-top: 0.125rem;
-      width: 80%;
+
+    /* Optional
+
+    .property-image-title
+    {
+    text-align:center;
+    position:Relative;
+    top:30%;
+    opacity:0;
+    transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+    color:black;
+    font-size:1.2em;
     }
-    .blog-author h3::before, .blog-author--no-cover h3::before {
-      background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/russ.jpeg");
-      background-size: cover;
-      border-radius: 50%;
-      content: " ";
-      display: inline-block;
-      height: 32px;
-      margin-right: 0.5rem;
-      position: relative;
-      top: 8px;
-      width: 32px;
+
+    .property-card:hover .property-image-title
+    {
+    opacity:1;
     }
-    .blog-author h3 {
-      color: #fff;
-      font-weight: 100;
-    }
-    .blog-author--no-cover h3 {
-      color: #999;
-      font-weight: 100;
-    }
-    .blog-body {
-      margin: 0 auto;
-      width: 80%;
-    }
-    .video-body {
-      height: 100%;
-      width: 100%;
-    }
-    .blog-title h1 a {
-      color: #333;
-      font-weight: 100;
-    }
-    .blog-summary p {
-      color: #4d4d4d;
-    }
-    .blog-tags ul {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      list-style: none;
-      padding-left: 0;
-    }
-    .blog-tags li + li {
-      margin-left: 0.5rem;
-    }
-    .blog-tags a {
-      border: 1px solid #999;
-      border-radius: 3px;
-      color: #999;
-      font-size: 0.75rem;
-      height: 1.5rem;
-      line-height: 1.5rem;
-      letter-spacing: 1px;
-      padding: 0 0.5rem;
-      text-align: center;
-      text-transform: uppercase;
-      white-space: nowrap;
-      width: 5rem;
-    }
-    .blog-footer {
-      border-top: 1px solid #e6e6e6;
-      margin: 0 auto;
-      padding-bottom: 0.125rem;
-      width: 80%;
-    }
-    .blog-footer ul {
-      list-style: none;
-      display: flex;
-      flex: row wrap;
-      justify-content: flex-end;
-      padding-left: 0;
-    }
-    .blog-footer li:first-child {
-      margin-right: auto;
-    }
-    .blog-footer li + li {
-      margin-left: 0.5rem;
-    }
-    .blog-footer li {
-      color: #999;
-      font-size: 0.75rem;
-      height: 1.5rem;
-      letter-spacing: 1px;
-      line-height: 1.5rem;
-      text-align: center;
-      text-transform: uppercase;
-      position: relative;
-      white-space: nowrap;
-    }
-    .blog-footer li a {
-      color: #999;
-    }
-    .comments {
-      margin-right: 1rem;
-    }
-    .published-date {
-      border: 1px solid #999;
-      border-radius: 3px;
-      padding: 0 0.5rem;
-    }
-    .numero {
-      position: relative;
-      top: -0.5rem;
-    }
-    .icon-star, .icon-bubble {
-      fill: #999;
-      height: 24px;
-      margin-right: 0.5rem;
-      transition: 0.25s ease;
-      width: 24px;
-    }
-    .icon-star:hover, .icon-bubble:hover {
-      fill: #ff4d4d;
-    }
+
+    */
 
 </style>
 </head>
@@ -244,43 +206,70 @@
     </h3>
   </div>
 </div>
-
-<a href="/ai_chess">
-<div style="padding-top: 5vh" >
-
-  <div class="blog-container">
-
-    <div class="blog-header">
-      <div class="blog-cover" style="background: url('static/chess.jpg')">
-
-      </div>
-    </div>
-
-    <div class="blog-body">
-      <div class="blog-title">
-        <h1><a href="/ai_chess">AI and Chess</a></h1>
-      </div>
-      <div class="blog-summary">
+<div class="main" style="padding-left: 18.5%; padding-top:8%; background: #f2f2f2; ; padding-bottom: 10%">
+  <div class="grid">
+    <div class="property-card">
+      <a href="/ai_chess.html">
+        <div class="property-image" style="background-image: url(static/chess.jpg)">
+          <div class="property-image-title">
+            <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+          </div>
+        </div></a>
+      <div class="property-description">
+        <h4><b>AI and Chess</b></h4>
         <p>Since the dawn of AI, Chess has always been subject matter to compare the developements and if AI can beat Humans. This blog i write my learnings and opinions while i was creating this Chess bot with my Friends Zainuddin and Mohammed.</p>
       </div>
-      <div class="blog-tags">
-        <ul>
-          <li><a href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</a></li>
-          <li><a href="https://en.wikipedia.org/wiki/Chess">Chess</a></li>
-          <li><a href="https://deepmind.com/">Google Deepmind</a></li>
-        </ul>
+    </div>
+    <div class="property-card">
+      <a href="/ai_chess.html">
+        <div class="property-image" style="background-image: url(static/chess.jpg)">
+          <div class="property-image-title">
+            <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+          </div>
+        </div></a>
+      <div class="property-description">
+        <h5> AI and Chess </h5>
+        <p>Since the dawn of AI, Chess has always been subject matter to compare the developements and if AI can beat Humans. This blog i write my learnings and opinions while i was creating this Chess bot with my Friends Zainuddin and Mohammed.</p>
       </div>
     </div>
-
-    <div class="blog-footer">
-      <ul>
-        <li class="published-date">9 Aug 2020</li>
-      </ul>
+    <div class="property-card">
+      <a href="/ai_chess.html">
+        <div class="property-image" style="background-image: url(static/chess.jpg)">
+          <div class="property-image-title">
+            <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+          </div>
+        </div></a>
+      <div class="property-description">
+        <h5> AI and Chess </h5>
+        <p>Since the dawn of AI, Chess has always been subject matter to compare the developements and if AI can beat Humans. This blog i write my learnings and opinions while i was creating this Chess bot with my Friends Zainuddin and Mohammed.</p>
+      </div>
     </div>
-
+    <div class="property-card">
+      <a href="/ai_chess.html">
+        <div class="property-image" style="background-image: url(static/chess.jpg)">
+          <div class="property-image-title">
+            <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+          </div>
+        </div></a>
+      <div class="property-description">
+        <h5> AI and Chess </h5>
+        <p>Since the dawn of AI, Chess has always been subject matter to compare the developements and if AI can beat Humans. This blog i write my learnings and opinions while i was creating this Chess bot with my Friends Zainuddin and Mohammed.</p>
+      </div>
+    </div>
   </div>
 </div>
-</a>
+<script>
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("navbar").style.top = "0";
+    } else {
+      document.getElementById("navbar").style.top = "-50px";
+    }
+    prevScrollpos = currentScrollPos;
+  }
 
+</script>
 </body>
 </html>
