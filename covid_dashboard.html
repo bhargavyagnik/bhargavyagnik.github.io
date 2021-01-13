@@ -89,7 +89,7 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title> <!--Enter-->
+    <title>COVID Dashboard Project</title> <!--Enter-->
 
     <style>
         h1 {font-family: 'Open Sans'; font-size: 10vw;font-weight: bolder;color: rgba(245, 245, 245, 0.8)
@@ -110,6 +110,10 @@
             padding: 5px;
         }
 
+        ::selection {
+            color: #000000;
+            background: rgb(65, 255, 212);
+        }
         @-webkit-keyframes AnimationName {
             0%{background-position:0% 50%}
             50%{background-position:100% 50%}
@@ -198,44 +202,34 @@
 
 <div class="intro"  style="padding-top: 5vw;border-radius: 15px;padding-bottom: 5vw">
     <div class="center">
-        <h1 style="line-height:100%">  </h1> <!--Enter title-->
+        <h1 style="line-height:100%">COVID Dashboard </h1> <!--Enter title-->
     </div>
 </div>
 
 <div style="background-color: white;margin: 5%;padding-bottom: 5%;-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);" >
-    <img src="https://raw.githubusercontent.com/bhargavyagnik/bhargavyagnik.github.io/master/static/coviddash.jpg" style="width: 100%;"> <!--Enter path-->
-    <p style="text-align: left; margin-left:5% "></p> <!--Enter date-->
+    <p style="text-align: left; margin-left:5% ;padding-top: 2%"> June 10, 2020</p> <!--Enter date-->
     <br> <!--Enter Text-->
-    <!--<p style="font-size:3vh;padding-top: 5px; font-weight: 400; font-family: Rubik">
-        Chess has always been a centre of attraction when it comes to making machines play with humans, as chess being a very
-        complex game and it forms the basics from where AI has evolved. Even though the researchers started to solve it from
-        18th century on hardwares, it in 1992 a computer could defeat a world champion.Researchers are still not able to
-        get a truly "State of the art" chess engine which could always predict the best move as it has around 10,000,000
-        moves to be checked which may take around 100's of years. In a simple chess game it may have moves up to 10<sup>120</sup>
-        which may take some light years to get the complete chess game correct. So this is the reason AI CHESS becomes a trending
-        research topic over these many years.Currently the best AI chess engine being Alpha GO checks around 10,000's of moves which is 100x better than any Grandmaster.
+    <p style="font-size:3vh;padding-top: 5px; font-weight: 400; font-family: Rubik">
+        2020 has been a very transforming period for me because COVID took off and then the world just stopped !
+        With the no. of cases increasing each day, it felt like dooms day was nearer and I was inquisitive to find out when would this get over.
+        Me being an Data Lover, i thought lets see some patterns or try to understand covid. While my dad (who's a Doctor) was busy trying to understand
+        how to detect the covid and understand its spread, I thought to apply some visualizations and statistics.
         <br>
-        Work started to become complicated when we began to figure out the complexity of the game and the moves.
-        I along with <a href="https://github.com/Zain-Saiyed">Zain</a> and <a href="https://github.com/momo1606">Mohammed</a> ,
-        discussed various approaches, and how our computing limitations would allow us to reach to a level nowhere near good
-        Chess Player. We found an approach using weighted matrices and that helped us lower the depth for search improving
-        the importance of places where the pieces were also the presence of opponent pieces etc. around it.
-        We calculated weighted score for each and this score was desired to be maximised.
+        So i took an opensource datasheet of covid that got updated daily and used it in my project to make a Flask Application. I tried various plots, also did some predictions for about next 5 days or so.
+        This project introduced me to a lot problems in time series and how to tackle them, but also i learnt a lot on the side on web developments and wanted to explore more. Fun Fact, I got an opportunity to
+        make a dashboard for the Government of Maharashtra for the same. But there, I predicted for the next 30 days for things like no. of cases, deaths, males, females  and various other parameters.
+        The MPE(Mean percentage error) of the prediction was 0.02 for # of Cases in India and that was very close.
         <br>
         <br>
-        <img class="imgcentre" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Minimax.svg/400px-Minimax.svg.png" >
+        <b>Some Screenshots</b>
+        <img class="imgcentre" src="https://github.com/bhargavyagnik/Covid19/raw/master/img/Annotation%202020-04-28%20134530.jpg" >
+        <img class="imgcentre" src="https://github.com/bhargavyagnik/Covid19/blob/master/img/img1.jpg?raw=true" >
+        <img class="imgcentre" src="https://raw.githubusercontent.com/bhargavyagnik/bhargavyagnik.github.io/master/static/coviddash.jpg" >
+
         <br>
-        We then used Min-Max approach that is extensively used in Solving problems like Tic-Tac-Toe, Chess etc. This is a
-        backtracking - decision rule based algorithm used for minimizing the possible loss at each step and maximising loss of opponent.
-        So if its your chance to move, you'll basically find out what move is your best and then think fast-forward what will be the next moves your opponent will play and then you think of a counter move to that move, so this is logically what a minmax does but as computers dont have brains or experience playing Chess, we give it a formula to find out the best move. Right now  we have Computer that can play like Humans all credit to Reinforcement Learning. Deep Blue has made this possible and if you're intersted in Chess by this blog do check out our code at <a href = "https://github.com/bhargavyagnik/Eulers-Chess"> Github Link</a>
+        You can check out the <a href = "https://github.com/bhargavyagnik/Covid19"> Opensource Dashboard</a> that is a flask application and can predict for next 5 days. The algorithms used in GOVT. OF MH. dashboard are a bit different and we used complex algorithms like LSTMs, ARIMA etc. We cannot share it because of the NDA but its not much different
         <br>
-        <br>
-        <span style="color: crimson ;font-family:Roboto;font-weight: 800"> Also i would like to discuss "Have we reached where we wanted to reach in AI ?" </span>
-        <br>
-        <br>
-        <br>
-        NO... It is boundless. It has the potential to be the next revolution in industries and we can see this happening. I would like to add the example of GPT-3 and how it has made the tasks so easy. During a Webinar, i saw that just by entering the coordinates of the chess board, it was able to predict the next move without any training and this is what the next Big thing in AI is ! Zero shot learning or Few shot learning. I would definitely add a blog on GPT-3 and my observations at <a href = "https://www.bhargavyagnik.ml/blog"> Blogs - BY Bhargav</a> .
-        </p>-->
+    </p>
 </div>
 
 <div class="w3-container" id="contact"  style="background:rgba(239,207,255,0);text-align: center;padding-bottom:5%;bottom: 0px;margin-top: 5%;width: 100%">
