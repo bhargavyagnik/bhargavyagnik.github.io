@@ -2,7 +2,7 @@ let contextDiv;
 let model;
 $(function() {
   var INDEX = 0;
-  generate_message("Namaste ! Im Euler, and I represent Bhargav. You can ask me anything about Bhargav, his work etc. You can ask me questions like <br> 1. What is your age<br> 2. What languages do you speak <br> 3. What is Robinhood or GRE Flashcards or  any project. <br> 4. What is your email etc.",'user')
+  generate_message("Namaste ! Im Euler, and I represent Bhargav. You can ask me anything about Bhargav, his work etc. You can ask me questions like <br> 1. What is your age<br> 2. What languages do you speak <br> 3. What is Robinhood ? or information about any project. <br> 4. What is your email etc.",'user')
   $("#chat-submit").click(  async function(e) {
     e.preventDefault();
     var msg = $("#chat-input").val();
