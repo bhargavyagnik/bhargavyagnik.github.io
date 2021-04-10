@@ -18,6 +18,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css'>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+ <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="icon" href="static/byicon.png" type="image/icon type">
   <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- Google Tag Manager -->
@@ -180,6 +185,239 @@ window.onclick = function(event) {
   width: 70%;
   padding: 10px;
 }
+
+#chat-circle {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background:#f2c933;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  color: white;
+  padding: 28px;
+  cursor: pointer;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+.btn#my-btn {
+     background: white;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    border-radius: 45px;
+    padding-right: 40px;
+    padding-left: 40px;
+    color: #f2c933;
+}
+#chat-overlay {
+    background: rgba(255,255,255,0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: none;
+}
+
+.shake {
+	display:inline-block
+}
+.shake {
+  display: block;
+  position: relative;
+}
+
+.chat-box {
+  display:none;
+  background: #efefef;
+  position:fixed;
+  right:30px;
+  bottom:50px;
+  width:350px;
+  max-width: 85vw;
+  max-height:100vh;
+  border-radius:5px;
+/*   box-shadow: 0px 5px 35px 9px #464a92; */
+  /*box-shadow: 0px 5px 35px 9px #ccc;*/
+}
+.chat-box-toggle {
+  float:right;
+  margin-right:15px;
+  cursor:pointer;
+}
+.chat-box-header {
+  background: #f2c933;
+  height:70px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  color:white;
+  text-align:center;
+  font-size:20px;
+  padding-top:17px;
+}
+.chat-box-body {
+  position: relative;
+  height:370px;
+  height:auto;
+  border:1px solid #ccc;
+  overflow: hidden;
+}
+.chat-box-body:after {
+  content: "";
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAgOCkiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgY3g9IjE3NiIgY3k9IjEyIiByPSI0Ii8+PHBhdGggZD0iTTIwLjUuNWwyMyAxMW0tMjkgODRsLTMuNzkgMTAuMzc3TTI3LjAzNyAxMzEuNGw1Ljg5OCAyLjIwMy0zLjQ2IDUuOTQ3IDYuMDcyIDIuMzkyLTMuOTMzIDUuNzU4bTEyOC43MzMgMzUuMzdsLjY5My05LjMxNiAxMC4yOTIuMDUyLjQxNi05LjIyMiA5LjI3NC4zMzJNLjUgNDguNXM2LjEzMSA2LjQxMyA2Ljg0NyAxNC44MDVjLjcxNSA4LjM5My0yLjUyIDE0LjgwNi0yLjUyIDE0LjgwNk0xMjQuNTU1IDkwcy03LjQ0NCAwLTEzLjY3IDYuMTkyYy02LjIyNyA2LjE5Mi00LjgzOCAxMi4wMTItNC44MzggMTIuMDEybTIuMjQgNjguNjI2cy00LjAyNi05LjAyNS0xOC4xNDUtOS4wMjUtMTguMTQ1IDUuNy0xOC4xNDUgNS43IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTg1LjcxNiAzNi4xNDZsNS4yNDMtOS41MjFoMTEuMDkzbDUuNDE2IDkuNTIxLTUuNDEgOS4xODVIOTAuOTUzbC01LjIzNy05LjE4NXptNjMuOTA5IDE1LjQ3OWgxMC43NXYxMC43NWgtMTAuNzV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjcxLjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjE3MC41IiBjeT0iOTUuNSIgcj0iMS41Ii8+PGNpcmNsZSBmaWxsPSIjMDAwIiBjeD0iODEuNSIgY3k9IjEzNC41IiByPSIxLjUiLz48Y2lyY2xlIGZpbGw9IiMwMDAiIGN4PSIxMy41IiBjeT0iMjMuNSIgcj0iMS41Ii8+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTkzIDcxaDN2M2gtM3ptMzMgODRoM3YzaC0zem0tODUgMThoM3YzaC0zeiIvPjxwYXRoIGQ9Ik0zOS4zODQgNTEuMTIybDUuNzU4LTQuNDU0IDYuNDUzIDQuMjA1LTIuMjk0IDcuMzYzaC03Ljc5bC0yLjEyNy03LjExNHpNMTMwLjE5NSA0LjAzbDEzLjgzIDUuMDYyLTEwLjA5IDcuMDQ4LTMuNzQtMTIuMTF6bS04MyA5NWwxNC44MyA1LjQyOS0xMC44MiA3LjU1Ny00LjAxLTEyLjk4N3pNNS4yMTMgMTYxLjQ5NWwxMS4zMjggMjAuODk3TDIuMjY1IDE4MGwyLjk0OC0xOC41MDV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxwYXRoIGQ9Ik0xNDkuMDUgMTI3LjQ2OHMtLjUxIDIuMTgzLjk5NSAzLjM2NmMxLjU2IDEuMjI2IDguNjQyLTEuODk1IDMuOTY3LTcuNzg1LTIuMzY3LTIuNDc3LTYuNS0zLjIyNi05LjMzIDAtNS4yMDggNS45MzYgMCAxNy41MSAxMS42MSAxMy43MyAxMi40NTgtNi4yNTcgNS42MzMtMjEuNjU2LTUuMDczLTIyLjY1NC02LjYwMi0uNjA2LTE0LjA0MyAxLjc1Ni0xNi4xNTcgMTAuMjY4LTEuNzE4IDYuOTIgMS41ODQgMTcuMzg3IDEyLjQ1IDIwLjQ3NiAxMC44NjYgMy4wOSAxOS4zMzEtNC4zMSAxOS4zMzEtNC4zMSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48L3N2Zz4=');
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height:100%;
+  position: absolute;
+  z-index: -1;
+}
+#chat-input {
+  background: #f4f7f9;
+  width:100%;
+  position:relative;
+  height:47px;
+  padding-top:10px;
+  padding-right:50px;
+  padding-bottom:10px;
+  padding-left:15px;
+  border:none;
+  resize:none;
+  outline:none;
+  border:1px solid #ccc;
+  color:#888;
+  border-top:none;
+  border-bottom-right-radius:5px;
+  border-bottom-left-radius:5px;
+  overflow:hidden;
+}
+.chat-input > form {
+    margin-bottom: 0;
+}
+#chat-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ccc;
+}
+#chat-input::-moz-placeholder { /* Firefox 19+ */
+  color: #ccc;
+}
+#chat-input:-ms-input-placeholder { /* IE 10+ */
+  color: #ccc;
+}
+#chat-input:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+}
+.chat-submit {
+  position:absolute;
+  bottom:3px;
+  right:10px;
+  background: transparent;
+  box-shadow:none;
+  border:none;
+  border-radius:50%;
+  color:#f2c933;
+  width:35px;
+  height:35px;
+}
+.chat-logs {
+  padding:15px;
+  height:370px;
+  overflow-y:scroll;
+}
+
+.chat-logs::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.chat-logs::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.chat-logs::-webkit-scrollbar-thumb
+{
+	background-color: #f2c933;
+}
+
+
+
+@media only screen and (max-width: 500px) {
+   .chat-logs {
+        height:40vh;
+    }
+}
+
+.chat-msg.user > .msg-avatar img {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  float:left;
+  width:15%;
+}
+.chat-msg.self > .msg-avatar img {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  float:right;
+  width:15%;
+}
+.cm-msg-text {
+  background:white;
+  padding:10px 15px 10px 15px;
+  color:#666;
+  max-width:75%;
+  float:left;
+  margin-left:10px;
+  position:relative;
+  margin-bottom:20px;
+  border-radius:30px;
+}
+.chat-msg {
+  clear:both;
+}
+.chat-msg.self > .cm-msg-text {
+  float:right;
+  margin-right:10px;
+  background: #f2c933;
+  color:white;
+}
+.cm-msg-button>ul>li {
+  list-style:none;
+  float:left;
+  width:50%;
+}
+.cm-msg-button {
+    clear: both;
+    margin-bottom: 70px;
+}
+@-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+	50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+	70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake:hover,
+.shake:focus {
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 0.8s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
     html{ margin: 0;
     height: 100%;
         scroll-behavior: smooth;
@@ -503,11 +741,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <img src="static/bhargav_pic.jpg" alt="Bhargav Yagnik" style="border-radius:5px;width: 100%;-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
     </div>
 </div>
-<div class="w3-container" style="background: rgba(255,255,255,0);margin-top: 20%;text-align: center;padding-bottom: 5%;margin-bottom: 20%">
+<div class="w3-container" style="background: rgba(255,255,255,0);margin-top: 20%;text-align: center;padding-bottom: 5%;">
         <h2 class="w3-wide" style="color: rgba(255,255,255,0.26);">#Experience</h2>
 
     <div class="timeline">
-      <div class="container left">
+      <div class="container left"  style="margin-left: 0px;">
         <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
             <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>Symbiosis Centre For Applied Artificial Intelligence</b></h3>
             <h4 style="text-align: left">Jan 2020-Present</h4>
@@ -522,11 +760,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </div>
 
-<div class="w3-container" style="background: rgba(0,115,255,0);margin-top: 20%;text-align: center;padding-bottom: 5%;margin-bottom: 20%">
+<div class="w3-container" style="background: rgba(0,115,255,0);margin-top: 5%;text-align: center;padding-bottom: 5%;">
     <h2 class="w3-wide" style="color: rgba(255,255,255,0.26);">#Publications</h2>
 
     <div class="timeline">
-        <div class="container left">
+        <div class="container left" style="margin-left: 0px;">
             <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
                 <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>Materials for Aerospace Applications: Machine Learning Methods for Titanium Alloys Classification</b></h3>
                 <h4 style="text-align: left">December 2020</h4>
@@ -535,7 +773,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
 
-        <div class="container right">
+        <div class="container right" style="margin-left: 0px;">
             <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
                 <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>Role of Artificial Intelligence in Detection of Hateful Speech for Hinglish Data on Social Media</b></h3>
                 <h4 style="text-align: left">Septempber 2020</h4>
@@ -547,7 +785,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="w3-container" style="background: white;margin-top: 10% ; padding-left:20vw; padding-right:20vw  ;text-align: center;padding-bottom: 5%;margin-bottom: 20%" id="projects">
-        <h2 class="w3-wide" style="color: rgba(0,0,0,0.75);margin-bottom: 3%">#Projects</h2>
+        <h2 class="w3-wide" style="color: rgba(0,0,0,0.75);margin-bottom: 3%;padding-top: 10%">#Projects</h2>
     <div class="blog-card alt">
     <div class="meta">
       <div class="photo" style="background-image:url('static/flashcard.jpg')"></div>
@@ -638,6 +876,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 </div>
+ <textarea id="context" hidden>
+This Website is made, designed, ideated and created by BhargavYagnik . My name is Euler. Who are you -  I am a bot. I am here , I talk with people as a representative of my introvert creator. I am a student studying in final year Computer Science Engineering. I am from the country India . My college is Symbiosis International University. My interests lie in Artificial intelligence and Machine learning. My age is 21. My favourite books are "Ikigai" and "The Autobiography of Yogi". I have authored and published two research papers, titled "Machine Learning Methods for Titanium Alloys Classification" and "Detection of Hateful Speech for Hinglish Data on Social Media". I am currently working  at Symbiosis Centre for applied AI with a role of research intern. I am working on projects in Natural Language Processing. I know programming languages like Python, C, C++, JAVA etc. And I can speak in English, Hindi, Sanskrit , Gujarati and French. I know 5 languages. Some of my created projects are GRE flashcards, COVID dashboard, Facemask detector , Andhadhun ,  AI Chess , Robin hood.
+GRE Flashcards are Flashcards helpful for students interested in improving vocabulary. With more than 2500 words.
+Andhadhun: A app for specially abled to control pc with voice commands, control mouse using hand tracking and support for colour blinds to adjust screen colours easily.
+Mask Detector : Computer Vision based face mask detection technique with ML .
+COVID dashboard : An accurate Covid dashboard with prediction for cases for next 3-4 days.
+AI Chess : A Chess bot that can beat a level 10 chess player and it is very quick to act .
+Robinhood app: An app that helps NGO collect old clothes from people easily
+ My hobbies include reading books, playing games and creating things like me . I love eating and cooking food. Pizza is my favourite food.
+What is my instagram - My Instagram : instagram@yagnikbhargav
+What is my twitter - My Twitter : twitter@YagnikBhargav
+What is my email - My Email is or email id is : bhargavyagnik99@gmail.com . You can contact me at bhargavyagnik99@gmail.com for queries or collaborations. I am open to collaborate and work on  interesting projects
+What is my github - My Github : github/bhargavyagnik.
+What is my linkedin - My Linkedin : linkedin@bhargavyagnik .
+    I made this chatbot  using Tensorflow js and BERT.
+    Hi - Hello.
+    Bye - Good bye have a great day.
+It was good taking to you, thank you, Bye bye.</textarea>
+<div id="chat-circle" class="btn btn-raised shake" style="background-image:url(static/bhargav.png);background-size:contain;">
+</div>
+
+  <div class="chat-box">
+    <div class="chat-box-header">
+      Euler
+      <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+    </div>
+    <div class="chat-box-body">
+      <div class="chat-box-overlay">
+      </div>
+      <div class="chat-logs">
+
+      </div><!--chat-log -->
+    </div>
+    <div class="chat-input">
+      <form>
+        <input type="text" id="chat-input" placeholder="Send a message..."/>
+      <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+      </form>
+    </div>
+  </div>
 <script>
  var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
@@ -651,6 +929,8 @@ window.onscroll = function() {
 }
 
 </script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script><script  src="./script.js"></script>
 </body>
 </html>
 
