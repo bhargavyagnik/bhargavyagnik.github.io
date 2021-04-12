@@ -12,7 +12,7 @@ $(function() {
     }
     await generate_message(msg, 'self');
     await generate_message(loader,'user');
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 250));
     INDEX=removemsg(INDEX);
     out = await process(msg, contextDiv);
     console.log(out)
@@ -46,11 +46,11 @@ function removemsg(i) {
     str += "          <\/div>";
     str += "        <\/div>";
     $(".chat-logs").append(str);
-    $("#cm-msg-"+INDEX).hide().fadeIn(300);
+    $("#cm-msg-"+INDEX).hide().fadeIn(200);
     if(type == 'self'){
      $("#chat-input").val('');
     }
-    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
+    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 100);
   }
 
   $(document).delegate(".chat-btn", "click", function() {
@@ -72,10 +72,11 @@ function removemsg(i) {
 
 });
 
-const process = async (input,contextDiv) => {
+const process = async (input,contextDiv,callback) => {
     const answers = await model.findAnswers(input, contextDiv.value);
     // console.log(answers);
     return answers;
+    callback();
 };
 const load=async()=>{
   console.log("Loading model");
