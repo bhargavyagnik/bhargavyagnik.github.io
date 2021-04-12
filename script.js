@@ -1,5 +1,6 @@
 let contextDiv;
 let model;
+const loader= `<span class='loader'><span class='loader__dot'></span><span class='loader__dot'></span><span class='loader__dot'></span></span>`
 $(function() {
   var INDEX = 0;
   generate_message("Namaste ! Im Euler, and I represent Bhargav. You can ask me anything about Bhargav, his work etc. You can ask me questions like <br> 1. What is your age<br> 2. What languages do you speak <br> 3. What is Robinhood ? or information about any project. <br> 4. What is your email etc.",'user')
@@ -9,7 +10,10 @@ $(function() {
     if(msg.trim() == ''){
       return false;
     }
-    generate_message(msg, 'self');
+    await generate_message(msg, 'self');
+    await generate_message(loader,'user');
+    await new Promise(resolve => setTimeout(resolve, 500));
+    INDEX=removemsg(INDEX);
     out = await process(msg, contextDiv);
     console.log(out)
     if (out.length >0) {
@@ -17,10 +21,17 @@ $(function() {
     } else {
       ou = "Sorry I am not aware ! <a href='https:\/\/www.bhargavyagnik.ml\/#contact'> Please inform and he'll improve me ! <\/a>";
     }
-    generate_message(ou, 'user');
+    await generate_message(ou, 'user');
   });
+function removemsg(i) {
+  const elem="cm-msg-"+String(i);
+  var myobj = document.getElementById(elem);
+  myobj.remove();
+  Q=true;
+  return i--;
 
-  function generate_message(msg, type) {
+}
+  async function generate_message(msg, type) {
     INDEX++;
     var str="";
     str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";

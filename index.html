@@ -327,7 +327,35 @@ window.onclick = function(event) {
   height:370px;
   overflow-y:scroll;
 }
-
+.loader {
+	 margin-bottom: -2px;
+	 text-align: center;
+	 opacity: 0.3;
+}
+ .loader__dot {
+	 display: inline-block;
+	 vertical-align: middle;
+	 width: 6px;
+	 height: 6px;
+	 margin: 0 1px;
+	 background: black;
+	 border-radius: 50px;
+	 animation: loader 0.45s infinite alternate;
+}
+ .loader__dot:nth-of-type(2) {
+	 animation-delay: 0.15s;
+}
+ .loader__dot:nth-of-type(3) {
+	 animation-delay: 0.35s;
+}
+ @keyframes loader {
+	 0% {
+		 transform: translateY(0);
+	}
+	 100% {
+		 transform: translateY(-5px);
+	}
+}
 .chat-logs::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
