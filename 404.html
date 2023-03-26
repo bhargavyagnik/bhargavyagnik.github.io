@@ -30,24 +30,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165887274-1"></script>
     <script>
-        $(window).ready(function() {
-            $(window).scroll(function() {
-                var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-                $(".fade").each(function() {
-                    /* Check the location of each desired element */
-                    var objectBottom = $(this).offset().top + $(this).outerHeight();
-
-                    /* If the element is completely within bounds of the window, fade it in */
-                    if (objectBottom < windowBottom) { //object comes into view (scrolling down)
-                        if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
-                    } else { //object goes out of view (scrolling up)
-                        if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
-                    }
-                });
-            }).scroll(); //invoke scroll-handler on page-load
-        });
-
-
+        
         // Used to toggle the menu on small screens when clicking on the menu button
         function myFunction() {
             var x = document.getElementById("navDemo");
@@ -58,13 +41,7 @@
             }
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        var modal = document.getElementById('ticketModal');
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -125,6 +102,7 @@
 
             margin: 0;
             height: fit-content;
+            padding: 70px;
             background-attachment: fixed;
             background: linear-gradient(230deg, #240b36,#ff416c, #8a2387, #5d26c1, #a17fe0, #59c173);
             background-size: 1800% 1800%;
@@ -212,17 +190,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="w3-top" id="navbar">
     <div class="w3-bar  w3-card" style="background-color: rgba(255,255,255,0)">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large  w3-hover-white">Home</a>
-        <a href="/projects" class="w3-bar-item w3-button w3-padding-large w3-hide-small  w3-hover-white">Projects</a>
-        <a href="/blog" class="w3-bar-item w3-button w3-padding-large w3-hide-small  w3-hover-white">Blog</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large   ">Home</a>
+        <a href="/projects" class="w3-bar-item w3-button w3-padding-large w3-hide-small   ">Projects</a>
+        <a href="/blog" class="w3-bar-item w3-button w3-padding-large w3-hide-small   ">Blog</a>
     </div>
 </div>
 
 <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
 <div id="/" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="/projects" class="w3-bar-item w3-button w3-padding-large  w3-hover-white" onclick="myFunction()">Projects</a>
-    <a href="/blog" class="w3-bar-item w3-button w3-padding-large  w3-hover-white" onclick="myFunction()">Blog</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large  w3-hover-white" onclick="myFunction()">Contact</a>
+    <a href="/projects" class="w3-bar-item w3-button w3-padding-large   " onclick="myFunction()">Projects</a>
+    <a href="/blog" class="w3-bar-item w3-button w3-padding-large   " onclick="myFunction()">Blog</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large   " onclick="myFunction()">Contact</a>
 </div>
 
 <div class="intro"  style="padding-top: 10vw;border-radius: 15px;height:50%;">
@@ -246,19 +224,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://www.linkedin.com/in/bhargav-yagnik-745518168/" title="Linkedin" class="w3-btn " style="border-radius: 10px;border: white;border-width: 5px"><span style="color: rgba(255,255,255,0.41);font-size:4vh"><i class="fa fa-linkedin">  </i></span></a>
     <a href="https://www.facebook.com/BCYAGNIK" title="Facebook" class="w3-btn " style="border-radius: 10px;border: white;border-width: 5px"><span style="color: rgba(255,255,255,0.41);font-size:4vh"><i class="fa fa-facebook"></i></span></a>
 </div>
-<script>
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.getElementById("navbar").style.top = "0";
-        } else {
-            document.getElementById("navbar").style.top = "-50px";
-        }
-        prevScrollpos = currentScrollPos;
-    }
-
-</script>
 </body>
 </html>
 

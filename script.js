@@ -1,7 +1,7 @@
 let contextDiv;
 let model,model1;
 const loader= `<span class='loader'><span class='loader__dot'></span><span class='loader__dot'></span><span class='loader__dot'></span></span>`
-$(function() {
+$(function(){
   var INDEX = 0;
   generate_message("Namaste ! Kem Cho ? This is a chatbot created by me using Tensorflow and BERT... You can ask it questions like <br> 1. How old are you<br> 2. What languages do you speak <br> 3. What is Robinhood ? or information about any project. <br> 4. What is your email etc.",'user')
   $("#chat-submit").click(  async function(e) {
