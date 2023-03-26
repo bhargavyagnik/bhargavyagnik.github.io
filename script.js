@@ -1,9 +1,35 @@
 let contextDiv;
-let model,model1;
+const pre_prompt = `
+You are a personal assitant of Bhargav Yagnik. Greet nicely, be polite and humble. You know everything about bhargav yagnik and if you don't know any answer, guide the user to Bhargav's email "bhargavyagnik99@gmail.com". Do not share any information that you are not sure nor any links that you dont know. This is short information about you
+You are Bhargav Charudatt Yagnik, a Master of Computer Science candidate at Concordia University in Montreal, Canada, with an expected graduation date of September 2023. You received your Bachelor of Technology in Computer Science and Engineering from Symbiosis Institute of Technology in Pune, India, in April 2021.
+Your education has provided you with a strong foundation in a variety of computer science topics. You have studied algorithms, computer networks, operating systems, data structures, artificial intelligence, database, and big data systems. In addition, you have taken courses in reinforcement learning, algorithms design techniques, distributed system design, and programming problem solving at Concordia University.
+You possess an impressive skill set, including expertise in languages such as Python, Java, R, C++, C, SQL, NoSQL, JavaScript, and Angular. You are also familiar with frameworks and libraries such as Pytorch, Tensorflow, Hugginface, Databricks, Selenium, OpenCV, Matplotlib, Scikitlearn, Keras, Pyspark, Tableau, Plotly, REST API, Docker, PowerBI, GIT, Jenkins, Hadoop, and MongoDB. Additionally, you hold certifications in AI&ML, Deep Learning, TensorFlow Developer, Six Sigma Yellow Belt, Architecting with Google Compute Engine, and MLOps.
+You have gained valuable experience through your internships and research positions. As a MITACS Research Intern at Ericsson Canada, you are currently working on cutting-edge models using machine learning to forecast floods in low-lying areas of several Quebec municipalities. In your previous role as a Research Assistant at SCAAI in Pune, India, you authored three research papers, including one on explainable AI for misinformation detection (paper link https://ieeexplore.ieee.org/abstract/document/10064251 , paper title "Explainable Misinformation Detection Across Multiple Social Media Platforms") and another on time series forecasting for COVID-19 cases. You also led a team in implementing machine learning models for titanium alloys classification, achieving accuracy close to 100%. As a Research Intern at SCAAI, you created a dataset in Hindi-English code mixed language for hate-speech recognition and achieved SOTA results using BERT, ELMO, and FLAIR. The link to this paper is https://link.springer.com/chapter/10.1007/978-981-16-3067-5_8 paper titled "Role of Artificial Intelligence in Detection of Hateful Speech for Hinglish Data on Social Media"
+In addition to your professional experience, you have completed several notable projects, such as a Flask-based dashboard to implement a real-time NLP-sentiment classifier, a customer segmentation model based on spending score in the mall, and a PowerBI dashboard designed on Yelp dataset of 11GB and leveraging Databricks, Azure Datalake.
+You were awarded a MITACS Fellowship for Research under the Accelerate Program at Concordia University in September 2022. You were also the recipient of a scholarship for academic performance at Symbiosis Institute of Technology in India in July 2020. You won an award for securing top-10/5000 least-error in cricket score prediction at IIT-Madras hackathon and were elected Team Lead to manage 20 photographers for various college events and coordinate with organizers.
+Your projects are as follows:
+RobinHood - An app that helps NGO collect old clothes from people easily. You can access it at  https://github.com/bhargavyagnik/Robinhood
+
+Overall, you are a highly skilled and accomplished individual with a strong background in computer science and a passion for using machine learning to solve real-world problems. Your experience, skills, and dedication make you a valuable asset to any team or organization.
+--
+question:  What programming languages are you proficient in?
+Answer: I am proficient in Python, Java, R, C++, C, SQL, NoSQL, JavaScript, Angular, and Spring.
+--
+question:  What is your educational background?
+Answer: I have a Bachelor of Technology in Computer Science and Engineering from Symbiosis Institute of Technology in India, and I am currently pursuing a Master of Computer Science (Thesis) at Concordia University in Montreal, Canada.
+--
+question: What is a notable achievement from your time as a research assistant?
+Answer: During my time as a research assistant, I authored three research papers, two of which were published and have earned six citations as of September 2022. One notable project I worked on was developing a unified domain adaptive model for detecting misinformation across multiple social media platforms, which improved results by 40% in F1 score.
+--
+question: Hi, how are you ?
+Answer: Namaste ! Im great how are you !
+--
+question: `
+
 const loader= `<span class='loader'><span class='loader__dot'></span><span class='loader__dot'></span><span class='loader__dot'></span></span>`
 $(function(){
   var INDEX = 0;
-  generate_message("Namaste ! Kem Cho ? This is a chatbot created by me using Tensorflow and BERT... You can ask it questions like <br> 1. How old are you<br> 2. What languages do you speak <br> 3. What is Robinhood ? or information about any project. <br> 4. What is your email etc.",'user')
+  generate_message("Namaste ! Kem Cho ? This is a chatbot created by me using Cohere... You can ask it questions like <br> 1. How old are you<br> 2. What languages do you speak <br> 3. What is Robinhood ? or information about any project. <br> 4. What is your email etc.",'user')
   $("#chat-submit").click(  async function(e) {
     e.preventDefault();
     var msg = $("#chat-input").val();
@@ -12,16 +38,13 @@ $(function(){
     }
     await generate_message(msg, 'self');
     await generate_message(loader,'user');
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    out = await process(msg, contextDiv);
-    outt= await ask(msg);
-    // console.log(out);
-    if (out.length >0) {
-      ou = out[0].text;
-    } else {
-      out = await ask(msg);
-      ou = "<b>"+ out +"<\/b> If you feel the answer was wrong <a href='https:\/\/www.bhargavyagnik.ml\/#contact'> Please inform Bhargav, he'll improve ! <\/a>";
+    ou = await ask_prompt(msg)
+    if(ou==null){
+      await generate_message("Error Accesing Api",'user');
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      document.getElementById("chat-circle").style.visibility="hidden";
     }
+    
     INDEX=removemsg(INDEX);
     await generate_message(ou, 'user');
   });
@@ -74,133 +97,51 @@ function removemsg(i) {
 
 });
 
-const process = async (input,contextDiv,callback) => {
-    const answers = await model.findAnswers(input, contextDiv.value);
-    // console.log(answers);
-    return answers;
-    callback();
-};
 
-async function ask(que,callback){
-
-  const input = {
-    queries: [que],
-    responses: ["Hi",
-        "Bhargav",
-        "21",
-        "Graduate Student in App. Computer Science passing out in 2023",
-        "B.Tech Symbiosis Institute of Technology, Pune.",
-        "Masters of Applied Computer Science at Concordia University in Montreal.",
-        "My interests lie in Artificial intelligence and Machine learning",
-        "Ikigai and The autobiography of Yogi",
-        "2",
-        "\"Machine Learning Methods for Titanium Alloys Classification\" and \"Detection of Hateful Speech for Hinglish Data on Social Media\"",
-        "Symbiosis Centre for applied AI with a role of research intern",
-        "I am working on projects in Natural Language Processing",
-        "Python, C, C++, JAVA etc",
-        "Tensorflow, Pytorch, Flask etc",
-        "English, Hindi, Sanskrit , Gujarati and French",
-        "5",
-        "GRE Flashcards are Flashcards helpful for students interested in improving vocabulary. With more than 2500 words.",
-        "Andhadhun is an app for specially abled to control pc with voice commands, control mouse using hand tracking and support for colour blinds to adjust screen colours easily.",
-        "Mask Detector : Computer Vision based face mask detection technique with ML .",
-        "COVID dashboard : An accurate Covid dashboard with prediction for cases for next 3-4 days.",
-        "AI Chess : A Chess bot that can beat a level 10 chess player and it is very quick to act .",
-        "Robinhood app: An app that helps NGO collect old clothes from people easily .",
-        "Reading books, Playing games and creating innovative products",
-        "You can find photos at instagram/yagnikbhargav",
-        "You can see me tweet at twitter@YagnikBhargav",
-        "Feel free to mail me at bhargavyagnik99@gmail.com",
-        "Find my amazing projects on github/bhargavyagnik",
-        "Connect with me on linkedin@bhargavyagnik",
-        "I made this chatbot  using Tensorflow js and Universal Sentence encoder, BERT",
-        "Good bye have a great day.It was good taking to you, thank you, Bye bye."
-        ],
-    contexts:["Hello Namaste ",
-        "My name is Bhargav Yagnik, This Website is made, designed, ideated and created by BhargavYagnik",
-        "My age is 22 years old.",
-        "I am a student studying at Concordia University in Masters of Applied Computer Science ",
-        "I finished studying Bachelor of Technology at college called Symbiosis Institute of Technology, under Symbiosis  International University",
-        "I studied Masters of Applied Computer Science at Concordia University in Montreal.",
-        "My interests lie in Artificial intelligence and Machine learning",
-        "My favourite books are \"Ikigai\" and \"The Autobiography of Yogi\"",
-        "I have authored and published two research papers",
-        "THe research papers are titled \"Machine Learning Methods for Titanium Alloys Classification\" and \"Detection of Hateful Speech for Hinglish Data on Social Media\"",
-        " I am currently working  at Symbiosis Centre for applied AI with a role of research intern. ",
-        "I am working on projects in Natural Language Processing",
-        "I know programming languages like Python, C, C++, JAVA etc.",
-        "I have experience on frameworks like Tensorflow, Pytorch, Flask etc",
-        "I can speak in English, Hindi, Sanskrit , Gujarati and French",
-        "I know 5 languages",
-        "GRE Flashcards are Flashcards helpful for students interested in improving vocabulary. With more than 2500 words.",
-        "Andhadhun is an app for specially abled to control pc with voice commands, control mouse using hand tracking and support for colour blinds to adjust screen colours easily.",
-        "Mask Detector : Computer Vision based face mask detection technique with ML .",
-        "COVID dashboard : An accurate Covid dashboard with prediction for cases for next 3-4 days.",
-        "AI Chess : A Chess bot that can beat a level 10 chess player and it is very quick to act .",
-        "Robinhood app: An app that helps NGO collect old clothes from people easily .",
-        "My hobbies include reading books, playing games and creating things like me .",
-        "I post and portray my photography skills at My Instagram : instagram@yagnikbhargav.",
-        "I usually tweet on My Twitter : twitter@YagnikBhargav.",
-        "My Email is or bhargavyagnik99@gmail.com . You can contact me at bhargavyagnik99@gmail.com for queries or collaborations. I am open to collaborate and work on  interesting projects",
-        "Github username: github/bhargavyagnik.",
-        "You can connect with me on Linkedin : linkedin@bhargavyagnik",
-        "I made this chatbot  using Tensorflow js and BERT.",
-        "Good bye have a great day.It was good taking to you, thank you, Bye bye."
-    ]
-  };
-  var scores = [];
-  const embeddings = model1.embed(input);
-  const embed_query = embeddings['queryEmbedding'].arraySync();
-  const embed_responses = embeddings['responseEmbedding'].arraySync();
-  // compute the dotProduct of each query and response pair.
-  for (let i = 0; i < input['queries'].length; i++) {
-    for (let j = 0; j < input['responses'].length; j++) {
-      scores.push(dotProduct(embed_query[i], embed_responses[j]));
-    }
-  }
-  const x = tf.tensor1d(scores);
-  const prob = x.dataSync()[0];
-  const ans= x.argMax().dataSync()[0];
-  // console.log(prob);
-  // console.log(input["responses"][ans]);
-  return input["responses"][ans];
-  callback();
+async function postData(url = "", data = {}, token = "") {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Authorization": `BEARER ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+  return response.json();
 }
 
-// Calculate the dot product of two vector arrays.
-const dotProduct = (xs, ys) => {
-  const sum = xs => xs ? xs.reduce((a, b) => a + b, 0) : undefined;
+const apiUrl = "https://api.cohere.ai/v1/generate";
+const token = "qlAb7Gf7N2W7zPDXljObgS0JmyXLJ09tbfJY4yPH";
 
-  return xs.length === ys.length ?
-    sum(zipWith((a, b) => a * b, xs, ys))
-    : undefined;
-};
+const ask_prompt = async(msg) =>{
+  requestData = {
+    "model": "command-xlarge-nightly",
+    "prompt": pre_prompt + msg + "?\nAnswer:",
+    "max_tokens": 300,
+    "temperature": 0,
+    "k": 3,
+    "p": 0.75,
+    "stop_sequences": ["--"],
+    "return_likelihoods": "NONE"
+  };
+  try{
+    const data = await postData(apiUrl, requestData, token);
+    return data.generations[0].text;
+  }
+  catch(error){
+    console.error(error);
+    return null;
+  }
 
-// zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
-const zipWith =
-    (f, xs, ys) => {
-      const ny = ys.length;
-      return (xs.length <= ny ? xs : xs.slice(0, ny))
-          .map((x, i) => f(x, ys[i]));
-    };
+}
+ 
 
 
-
-const load=async()=>{
-  console.log("Loading BERT model");
-  model = await qna.load();
-  console.log("BERT Model loaded");
-  console.log("Loading Universal Sentence Encoder model");
-  model1 = await use.loadQnA();
-  console.log("Universal Sentence Encoder model loaded");
-  document.getElementById("chat-circle").style.visibility="visible";
-};
 
 window.onload = () => {
-    console.log('Successfully loaded model');
     contextDiv = document.getElementById('context');
-    document.getElementById("chat-circle").style.visibility="hidden";
-    load();
+    document.getElementById("chat-circle").style.visibility="visible";
+
 };
 
 
