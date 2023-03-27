@@ -277,6 +277,7 @@ padding:10px 15px 10px 15px;
 color:#666;
 max-width:75%;
 float:left;
+word-wrap: break-word;
 margin-left:10px;
 position:relative;
 margin-bottom:20px;
@@ -286,6 +287,7 @@ border-radius:30px;
 clear:both;
 }
 .chat-msg.self > .cm-msg-text {
+    
 float:right;
 margin-right:10px;
 background: #f2c933;
