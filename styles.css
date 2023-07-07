@@ -1,20 +1,23 @@
-h1 {font-family: 'Open Sans'; font-size: 10vw;font-weight: bolder;color: rgba(245, 245, 245, 0.8)
+h1 {font-family: 'Open Sans'; font-size: 10vw;font-weight: bolder;color: rgb(0, 0, 0)
 }
-h2{font-family: 'Roboto';font-size: 4.5vw;font-weight:bolder ;color: rgba(245, 245, 245, 0.66);}
+h2{font-family: 'Roboto';font-size: 4.5vw;font-weight:bolder ;color: rgba(0, 0, 0, 0.66);}
 p{font-family: Roboto ; font-size: 1vw;color: rgba(0,0,0,0.75);text-align: center}
 body{
 
     margin: 0;
     height: 100vw;
     background-attachment: fixed;
-background: linear-gradient(230deg, #240b36,#ff416c, #8a2387, #5d26c1, #a17fe0, #59c173);
-background-size: 1800% 1800%;
-    background-repeat: repeat;
--webkit-animation: AnimationName 29s ease infinite;
-animation: AnimationName 29s ease infinite;
+background:  rgb(255, 181, 43);
 transition:
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+.spacing {
+    margin-bottom: 0.5vw;
+  }
+#bhargav-poster{
+    margin:5%;
+    font-size: 5vmin;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -23,26 +26,16 @@ th, td {
 padding: 5px;
 }
 
-@-webkit-keyframes AnimationName {
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-@keyframes AnimationName {
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
 @media screen and (max-width: 650px) {
     .intro{
         margin: auto;
         margin-top: 20%;
     }
     h1{
-        font-size: 10vw;
+        font-size: 10vmax;
     }
     h2{
-        font-size: 4vw;
+        font-size: 4vmax;
     }
     p{font-family: Roboto ; font-size: 3vw}
             .blog-card {
