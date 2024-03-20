@@ -1,394 +1,127 @@
-<!--Designed and created by Bhargav Yagnik -->
-
-<!-- https://codepen.io/doonnnx/pen/xGJWBP -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165887274-1"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
-<script  src="./script.js"></script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-165887274-1');
-</script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css'>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
- <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
-<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-    <link rel="icon" href="static/byicon.png" type="image/icon type">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PRB8GH5');</script>
-    <!-- End Google Tag Manager -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165887274-1"></script>
-<script>
-    $(window).ready(function() {
-  $(window).scroll(function() {
-    var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-    $(".fade").each(function() {
-      /* Check the location of each desired element */
-      var objectBottom = $(this).offset().top + $(this).outerHeight();
-
-      /* If the element is completely within bounds of the window, fade it in */
-      if (objectBottom < windowBottom) { //object comes into view (scrolling down)
-        if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
-      } else { //object goes out of view (scrolling up)
-        if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
-      }
-    });
-  }).scroll(); //invoke scroll-handler on page-load
-});
-
-
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-// When the user clicks anywhere outside of the modal, close it
-var modal = document.getElementById('ticketModal');
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-165887274-1');
-  </script>
-<script type="application/ld+json">
-  {
-  "@context" : "http://schema.org",
-  "@type" : "Person",
-  "name" : "Bhargav Yagnik",
- "url" : "https://bhargavyagnik.github.io",
- "sameAs": [
-     "https://twitter.com/YagnikBhargav",
-     "https://www.facebook.com/BCYAGNIK/",
-     "https://github.com/bhargavyagnik",
-     "https://www.linkedin.com/in/bhargavyagnik",
-     "https://www.instagram.com/yagnikbhargav/",
-     "https://in.linkedin.com/in/bhargavyagnik"
-   ]
-}
-
-</script>
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bhargav Yagnik | Computer Science Engineer | AI ML | Montreal | Canada | Concordia University | SCAAI | Symbiosis Institute of Technology </title>
-  <meta name="title" content="Bhargav Yagnik | Computer Science Engineer | AI ML | Montreal | Canada | Concordia University | SCAAI | Symbiosis Institute of Technology">
-  <meta name="description" content="Bhargav Yagnik , AI ML, Concordia University, Montreal, Canada , SCAAI, Symbiosis, Machine learning website, portfolio website">
-  <meta name="type" content="website">
-  <meta name="url" content="https://bhargavyagnik.ml/">
-  <meta name="keywords" content="bhargav,yagnik,ai,engineer,symbiosis,concordia,montreal,quebec,canada,MsApCompSc,pune,sit,symbiosis institute of technology,nlp,cv,ml,machine learning,bhargavyagnik,gandhinagar,gujarat,natural language processing,developer,python">
-  <meta name="twitter:site" content="@bhargavyagnik">
-    <meta name="description" content="Bhargav Yagnik , AI ML, Concordia University, Montreal, Canada , SCAAI, Symbiosis, Machine learning website, portfolio website">
-
-<!-- Google / Search Engine Tags -->
-<meta itemprop="name" content="Bhargav Yagnik | Student at Concordia University| Montreal | AI ML | Canada | SCAAI | Symbiosis Institute of Technology ">
-<meta itemprop="description" content="Bhargav Yagnik , AI ML, Concordia University, Montreal, Canada , SCAAI, Symbiosis, Machine learning website, portfolio website">
-<meta itemprop="image" content="https://bhargavyagnik.github.io/static/bhargav_pic.jpg">
-
-<!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://www.bhargavyagnik.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bhargav Yagnik | Computer Science Engineer | AI ML | Montreal | Canada | Concordia University | SCAAI | Symbiosis Institute of Technology">
-<meta property="og:description" content="Bhargav Yagnik , AI ML, Concordia University, Montreal, Canada , SCAAI, Symbiosis, Machine learning website, portfolio website">
-<meta property="og:image" content="https://bhargavyagnik.github.io/static/bhargav_pic.jpg">
-
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bhargav Yagnik | Computer Science Engineer">
-<meta name="twitter:description" content="Bhargav Yagnik , AI ML, Concordia University, Montreal, Canada , SCAAI, Symbiosis, Machine learning website, portfolio website">
-<meta name="twitter:image" content="https://bhargavyagnik.github.io/static/bhargav_pic.jpg">
-<link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRB8GH5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<!-- Navbar -->
-<div class="w3-top" id="navbar">
-  <div class="w3-bar  w3-card" style="background-color: rgba(255, 255, 255, 0)">
-    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large    ">Home</a>
-    <a href="/projects" class="w3-bar-item w3-button w3-padding-large w3-hide-small    ">Projects</a>
-    <a href="/blog" class="w3-bar-item w3-button w3-padding-large w3-hide-small    ">Blog</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small    ">Contact</a>
-    <a href="https://www.instagram.com/yagnikbhargav/" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-instagram"></i></a>
-      <a href="https://github.com/bhargavyagnik" class="w3-padding-large   w3-hide-small w3-right"><i class="fa fa-github"></i></a>
-      <a href="https://twitter.com/YagnikBhargav" class="w3-padding-large w3-hover-blue w3-hide-small w3-right"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/bhargavyagnik" class="w3-padding-large w3-hover-indigo w3-hide-small w3-right"><i class="fa fa-linkedin"></i></a>
-  </div>
-</div>
-
-<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-<div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-top " style="margin-top:46px">
-  <a href="/projects" class="w3-bar-item w3-button w3-padding-large    " onclick="myFunction()">Projects</a>
-  <a href="/blog" class="w3-bar-item w3-button w3-padding-large    " onclick="myFunction()">Blog</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large    " >Contact</a>
-</div>
-
-<div class="intro"  style="padding-top: 5vw;margin-bottom: 100px;border-radius: 15px;height:50vmax;">
- <div id="bhargav-poster">
-     <h1 style="line-height:100%"> Hello,</h1>
-     <h2 style="line-height:95%"> I'M BHARGAV YAGNIK </h2>
-     <h3 style="line-height:100%;color: rgba(0, 0, 0, 0.5);font-family:Roboto;font-size: 4vmax;font-weight: lighter">
-         Developer, AI research Intern and Masters student in Computer Science at Concordia University, Montreal. Enthusiast in AI, Tech and software. <br>
-         NLP, CV, RL ...<br>
-        For the society ❤️
-     </h3>
- </div>
-</div>
-<div  class="w3-container"  style="background-color: white;margin: 5%;border-radius: 25px;padding-bottom: 5%;-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);" >
-    <div class="w3-twothird" >
-        <div class="w3-container" style="max-width:950px;text-align: left;padding-top: 5%;" id="about">
-            <h3 style="color: rgba(27,27,27,0.92)"> About Me</h3>
-            <p class ="w3-justify" > I'm a Graduate student currently based in Montreal,Canada. Currently working under Prof. Brigette Jaumard for leveraging ML for Flood Prediction. This project is in collaboration with Ericsson under MITACS grant.</p>
-            <h3></h3>
-            <p  class="w3-justify">Driven by my passion for AI, I am dedicated to creating groundbreaking solutions that enhance people's lives and foster seamless collaboration between humans and computers. My enthusiasm lies in developing innovative tools and applications, as well as exploring transformative ideas that leave a lasting impact on our world.
-            </p>
-            <h3></h3>
-            <p  class="w3-justify">
-                I am currently working on projects in the field of ML mainly Time Series Forecasting, Natural Language Processing, Computer Vision, Deep Learning
-                and was previously associated with Symbiosis Centre For Applied Artificial Intelligence, where I worked under Dr. Rahee Walambe and Dr. Ketan Kotecha and owe them my first breakthrough in this domain.
-            </p>
-            <p class="w3-justify"> The Technologies I've love working with :</p>
-                <ul class="w3-justify" style="columns: 2;column-gap: 5px;color:#3d6cb9;font-family: Roboto;
-                font-size:larger">
-                    <li>Python</li>
-                    <li>Pytorch</li>
-                    <li>Tensorflow</li>
-                    <li>C++</li>
-                    <li>Java</li>
-                    <li>DataBricks</li>
-                    <li>AWS</li>
-                    <li>Javascript</li>
-                    <li>C++</li>
-                    <li>Android</li>
-                </ul>
-        </div>
-    </div>
-    <div  class="w3-third" style="margin-top:5%;object-fit: scale-down ; padding-right: 3%;">
-        <img src="static/bhargav_pic.jpg" alt="Bhargav Yagnik" style="border-radius:5px;width: 100%;-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
-    </div>
-</div>
-<div class="w3-container" style="background: rgba(255,255,255,0);margin-top: 20%;text-align: center;padding-bottom: 5%;">
-        <h2 class="w3-wide" style="color: rgba(0,0,0,0.75)">#Experience</h2>
-
-    <div class="timeline">
-      <div class="container left"  style="margin-left: 0px;">
-        <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
-            <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>MITACS Research Intern</b></h3>
-            <h4 style="color: rgba(34,38,34,0.81);text-align: left"><b>Ericsson</b></h4 >
-            <h4 style="text-align: left">Sept 2022 - Sept 2023 (1 year)</h4>
-            <p style="text-align: left"> I am currently collaborating with Prof. Brigette Jaumard and Ericsson on a project to use machine learning to predict and prevent floods. We are working together to find solutions to this important issue that impacts more than 60 Million people each year.
-            </p>
-        </div>
-      </div>
-    </div>
-    <div class="timeline">
-      <div class="container right"  style="margin-left: 0px;">
-        <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
-            <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>Research Intern</b></h3>
-            <h4 style="color: rgba(34,38,34,0.81);text-align: left"><b>Symbiosis Centre For Applied Artificial Intelligence</b></h4>
-            <h4 style="text-align: left">Jan 2020-June 2021 (1.5 years)</h4>
-            <p style="text-align: left">Worked on Hate Speech detection from social media text containing  hindi-english code mixed language. <br>
-                <par>- Developed a Covid Dashboard with predictions for 40 days with variations of 2% for various parameters for the state of Maharashtra<br></par>
-              <par>- Mentored students on a project on Application of Machine learning methods in Material science for the detection of titanium alloys<br></par>
-            <par> - Currently working on Transfer learning in Natural Language processing.</par>
-            </p>
-        </div>
-      </div>
-    </div>
-</div>
-
-<div class="w3-container" style="background: rgba(0,115,255,0);margin-top: 5%;text-align: center;padding-bottom: 5%;">
-    <h2 class="w3-wide" style="color: rgba(0,0,0,0.75)">#Publications</h2>
-
-    <div class="timeline">
-        <div class="container right" style="margin-left: 0px;">
-            <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
-                <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>Domain Adaptation for Generalized Misinformation Detection Across Multiple Social Media Platforms</b></h3>
-                <h4 style="text-align: left">May 2022</h4>
-                <p style="text-align: left"><i> Ketan Kotecha, Ananya Srivastava, Bhargav Yagnik, Mohammed Hasan, Zainuddin Saiyed, Rahee Walambe</i>
-                </p>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width,initial-scale=1" name="viewport">
+        <meta content="description" name="description">
+        <meta name="google" content="notranslate" />
+        <meta content="Mashup templates have been developped by Orson.io team" name="author">
+        <!-- Disable tap highlight on IE -->
+        <meta name="msapplication-tap-highlight" content="no">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+        <link href="./assets/images/byicon.png" rel="icon">
+        <title>Bhargav Yagnik </title>
+        <link href="./main.3f6952e4.css" rel="stylesheet">
+    </head>
+    <body class="minimal">
+        <div id="site-border-left"></div>
+        <div id="site-border-right"></div>
+        <div id="site-border-top"></div>
+        <div id="site-border-bottom"></div>
+        <!-- Add your content of header -->
+        <header>
+            <nav class="navbar  navbar-fixed-top navbar-inverse" style="background-color: rgba(0, 0, 0, 0.61);">
+                <div class="container">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav ">
+                            <li><a href="./index.html" title="">Home</a></li>
+                            <li><a href="./about.html" title="">About me</a></li>
+                            <li><a href="./works.html" title="">Works</a></li>
+                            <!-- <li><a href="./blogs.html" title="">Blogs</a></li> -->
+                            <li><a href="./contact.html" title="">Contact</a></li>
+                            <li><a href="./Rewrite/" title="">ReWrite</a></li>
+                            <li><a href="./GRE-Flashcards/" title="">GRE Flashcards</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- Add your site or app content here -->
+        <div class="hero-full-container background-image-container white-text-container" style="background-image: url(&quot;./assets/images/spmoon.jpg&quot;); transform: translate3d(-5.50595px, -0.786713px, 0px);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="hero-full-wrapper">
+                            <div class="text-content">
+                                <h1>Hello,<br>
+                                    I'm Bhargav Yagnik <br>
+                                    <span id="typed-strings">
+                                    <span>ML Engineer</span>
+                                    <span>Data Scientist</span>
+                                    <span>Software Developer</span>
+                                    </span>
+                                    <span id="typed"></span>
+                                </h1>
+                                <h4>[He/Him]</h4>
+                                <h4>Connect me on -</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="list-icons">
+                                            <li>
+                                                <a href="https://github.com/bhargavyagnik" title="" class="fa-icon" style="color: white;">
+                                                <i class="fa fa-github"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://twitter.com/YagnikBhargav" title="" class="fa-icon" style="color: white;">
+                                                <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.linkedin.com/in/bhargavyagnik/" title="" class="fa-icon" style="color: white;">
+                                                <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="container left" style="margin-left: 0px;">
-            <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
-                <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>Materials for Aerospace Applications: Machine Learning Methods for Titanium Alloys Classification</b></h3>
-                <h4 style="text-align: left">December 2020</h4>
-                <p style="text-align: left"><i> Meena Laad, Rahee Walambe, Ketan Kotecha, Bhargav Yagnik, Varad Nerlekar, Nishita Agarwal </i>
-                </p>
+        <div>
+        </div>
+        <div class="float-container white-text-container">
+            <span class="wave">
+                <p>Tap👋</p>
+            </span>
+        </div>
+        <div id="chat-circle" class="btn btn-raised shake" style="background-image:url(assets/apple-icon-180x180.png);background-size:contain;visibility:visible">
+        </div>
+        <div class="chat-box">
+            <div class="chat-box-header">
+                <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+            </div>
+            <div class="chat-box-body">
+                <div class="chat-box-overlay">
+                </div>
+                <div class="chat-logs">
+                </div>
+                <!--chat-log -->
+            </div>
+            <div class="chat-input">
+                <form>
+                    <input type="text" id="chat-input" placeholder="Send a message..."/>
+                    <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+                </form>
             </div>
         </div>
-
-        <div class="container right" style="margin-left: 0px;">
-            <div class="content" style="-webkit-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);box-shadow: 10px 10px 70px -24px rgba(0,0,0,0.75);">
-                <h3 style="color: rgba(34,38,34,0.81);text-align: left"><b>Role of Artificial Intelligence in Detection of Hateful Speech for Hinglish Data on Social Media</b></h3>
-                <h4 style="text-align: left">Septempber 2020</h4>
-                <p style="text-align: left"><i> Bhargav Yagnik, Ananya Srivastava, Mohammed Hasan, Rahee Walambe, Ketan Kotecha </i>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="w3-container" style="background: white;margin-top: 10% ; padding-left:20vw; padding-right:20vw  ;text-align: center;padding-bottom: 5%;margin-bottom: 10%" id="projects">
-  <h2 class="w3-wide" style="color: rgba(0,0,0,0.75);margin-bottom: 3%;padding-top: 10%">#Projects</h2>
-    <div class="blog-card alt">
-      <div class="meta">
-        <div class="photo" style="background-image:url('https://raw.githubusercontent.com/bhargavyagnik/yelp-data-analytics-databricks/main/yelp_data.jpg')"></div>
-        <div class="details">
-        <h2>YELP Dashboard Databricks PowerBI</h2>
-        <h3>Analyzed YELP dataset using Azure Databricks and Power BI to answer business questions and visualize the results.</h3>
-        <p class="read-more" style="color: #c9c5c6">
-          <a href="https://www.bhargavyagnik.com/yelp-data-analytics-databricks">Read More</a>
-        </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="blog-card alt">
-      <div class="meta">
-        <div class="photo" style="background-image:url('static/flashcard.jpg')"></div>
-        <div class="details">
-        <h2>GRE Flashcard</h2>
-        <h3>Flashcards helpfull for students interested in improving vocabulary. With more than 2500 words</h3>
-        <p class="read-more" style="color: #c9c5c6">
-          <a href="https://www.bhargavyagnik.com/GRE-Flashcards">Read More</a>
-        </p>
-        </div>
-      </div>
-    </div>
-    <div class="blog-card alt">
-        <div class="meta">
-            <div class="photo" style="background-image:url('static/coviddash.jpg')"></div>
-            <div class="details">
-                <h2>COVID-19 Dashboard</h2>
-                <h3>An accurate Covid dashboard with prediction for cases for next 3-4 days.</h3>
-                <p class="read-more" style="color: #c9c5c6">
-                    <a href="https://www.bhargavyagnik.com/covid_dashboard">Read More</a>
-                </p>
-            </div>
-        </div>
-    </div>
-  <div class="blog-card alt">
-    <div class="meta">
-      <div class="photo" style="background-image:url('static/facemaskdet.jpg')"></div>
-      <div class="details">
-        <h2>Face Mask Detection</h2>
-      <h3>Computer Vision based face mask detection technique with ML</h3>
-      <p class="read-more" style="color: #c9c5c6">
-        <a href="#">Read More</a>
-      </p>
-      </div>
-    </div>
-  </div>
-    <div class="blog-card alt">
-    <div class="meta">
-      <div class="photo" style="background-image:url('static/andhadhun.jpg')"></div>
-      <div class="details">
-        <h2>Andhadhun</h2>
-      <h3>A app for specially abled to control pc with voice commands, control mouse using hand tracking and support for color blinds to adjust screen colors easily.</h3>
-      <p class="read-more" style="color: #c9c5c6">
-        <a href="#">Read More</a>
-      </p>
-      </div>
-    </div>
-
-  </div>
-
-     <div class="blog-card alt">
-    <div class="meta">
-      <div class="photo" style="background-image:url('static/chess.jpg')"></div>
-      <div class="details">
-      <h2>AI Chess</h2>
-      <h3>A Chess bot that can beat a level 10 chess player and it is very quick to act.</h3>
-      <p class="read-more" style="color: #c9c5c6">
-        <a href="#">Read More</a>
-      </p>
-      </div>
-    </div>
-  </div>
-    <div class="blog-card alt">
-    <div class="meta">
-      <div class="photo" style="background-image:url('static/robinhood.jpg')"></div>
-      <div class="details">
-      <h2>Robinhood App</h2>
-      <h3>An app that helps NGO collect old clothes from people easily.</h3>
-      <p class="read-more" style="color: #c9c5c6">
-        <a href="#">Read More</a>
-      </p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="w3-container" id="contact"  style="background:rgba(239,207,255,0);text-align: center;padding-bottom:5%;width: 100%">
-    <a href="mailto:hello@bhargavyagnik.com" class="w3-btn " title="Mail" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: rgba(255,255,255,0.41);font-size:4vh"><i class="fa fa-envelope"></i></span></a>
-    <a href="static/documents/Bhargav_Yagnik_Resume.pdf" class="w3-btn " title="Resume" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: rgba(255,255,255,0.41);font-size:4vh"><i class="fa fa-address-card-o"></i></span></a>
-    <a href="https://github.com/bhargavyagnik" class="w3-btn " title="Github" style="border-radius: 10px;border: white;border-width: 5px"><span style="color: rgba(255,255,255,0.41);font-size:4vh"><i class="fa fa-github"></i></span></a>
-    <a href="https://www.linkedin.com/in/bhargav-yagnik-745518168/" title="Linkedin" class="w3-btn " style="border-radius: 10px;border: white;border-width: 5px"><span style="color: rgba(255,255,255,0.41);font-size:4vh"><i class="fa fa-linkedin">  </i></span></a>
-   
-</div>
-
-<div id="chat-circle" class="btn btn-raised shake" style="background-image:url(static/bhargav.png);background-size:contain;visibility: hidden">
-</div>
-
-  <div class="chat-box">
-    <div class="chat-box-header">
-      Euler
-      <span class="chat-box-toggle"><i class="material-icons">close</i></span>
-    </div>
-    <div class="chat-box-body">
-      <div class="chat-box-overlay">
-      </div>
-      <div class="chat-logs">
-
-      </div><!--chat-log -->
-    </div>
-    <div class="chat-input">
-      <form>
-        <input type="text" id="chat-input" placeholder="Send a message..."/>
-      <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
-      </form>
-    </div>
-  </div>
-  <script>
-    
-
-   
-   </script>
-</body>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (event) {
+               type();
+               movingBackgroundImage();
+            });
+        </script>
+        <script type="text/javascript" src="./main.70a66962.js"></script>
+    </body>
 </html>
-
-
